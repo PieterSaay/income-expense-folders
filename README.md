@@ -23,8 +23,23 @@ automatically (deterministic, seeded — same data every run).
   model.
 - **`src/hooks/useFolderAssignments.ts`** — the annotation layer: which
   transaction ids belong to which folder ids, persisted to `localStorage`.
-- **`src/components/`** — `Sidebar` (folder list + drop targets + totals),
+- **`src/components/`** — `Sidebar` (folder list + drop targets + budgets),
   `TransactionList` / `TransactionRow` (the draggable ledger), `FolderChip`.
+
+## Envelope budgeting
+
+Each folder now carries a `budget` — money allocated into it for the
+current month, e.g. R2,000 for Petrol Expenses (`src/data/folders.ts`).
+The sidebar shows, per folder, a progress bar and "R500 of R2,000 · R1,500
+left" (switching to a red "R300 over budget" once spending in that folder
+this month exceeds its allocation). Filing a debit transaction into a
+folder is what counts against its budget — this is the classic cash-envelope
+budgeting method, digitized: salary comes in, you allocate portions of it
+into folders, then spending drains the matching envelope. A summary panel
+above the folder list shows this month's income against how much of it has
+been allocated to folders, so it's visible how much of your salary is still
+unassigned. Budgets are editable inline (click a folder's budget line), and
+new folders can be created with a starting budget.
 
 ## Key design decision: labels, not strict folders
 

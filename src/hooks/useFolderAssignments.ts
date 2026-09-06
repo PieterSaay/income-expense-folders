@@ -40,5 +40,9 @@ export function useFolderAssignments() {
     });
   }, []);
 
-  return { assignments, assignToFolder, removeFromFolder };
+  const clearFolders = useCallback((transactionId: string) => {
+    setAssignments((prev) => ({ ...prev, [transactionId]: [] }));
+  }, []);
+
+  return { assignments, assignToFolder, removeFromFolder, clearFolders };
 }

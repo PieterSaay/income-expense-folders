@@ -10,6 +10,8 @@ export interface Folder {
   id: string;
   name: string;
   color: string;
+  /** money allocated into this folder for the current month, e.g. a R2,000 petrol budget */
+  budget: number;
 }
 
 // A transaction can belong to zero, one, or several folders (labels, not

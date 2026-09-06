@@ -28,7 +28,7 @@
 /* Sidebar */
 
 .sidebar {
-  width: 260px;
+  width: 280px;
   flex-shrink: 0;
   border-right: 1px solid var(--border);
   padding: 16px;
@@ -45,10 +45,45 @@
   color: var(--text);
 }
 
+.income-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-alt);
+  font-size: 12px;
+}
+
+.income-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.income-summary-row:first-child {
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.income-summary-row.over span:last-child {
+  color: var(--danger);
+  font-weight: 600;
+}
+
 .folder-list {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.folder-item {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -72,6 +107,21 @@
   cursor: pointer;
 }
 
+.folder-select {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
 .folder-list-item:hover {
   background: var(--bg-alt);
 }
@@ -88,29 +138,84 @@
   background: var(--bg-alt);
 }
 
-.folder-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
-
 .folder-count {
   font-variant-numeric: tabular-nums;
   color: var(--text);
   font-size: 12px;
 }
 
-.folder-total {
+.folder-budget {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 10px 6px;
+}
+
+.budget-bar {
+  height: 5px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.budget-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+.budget-bar-fill.over {
+  background: var(--danger);
+}
+
+.budget-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-size: 11.5px;
   font-variant-numeric: tabular-nums;
-  font-size: 12px;
   color: var(--text);
-  min-width: 72px;
-  text-align: right;
+  cursor: pointer;
+  text-align: left;
+}
+
+.budget-remaining-line.over {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.budget-remaining-line.under {
+  color: var(--text);
+}
+
+.budget-edit-form {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  color: var(--text);
+}
+
+.budget-edit-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 3px 6px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--text-h);
+  font: inherit;
+  font-size: 11.5px;
 }
 
 .new-folder-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
 }
 
@@ -124,6 +229,10 @@
   color: var(--text-h);
   font: inherit;
   font-size: 13px;
+}
+
+.new-folder-form .new-folder-budget {
+  flex: 0 0 72px;
 }
 
 .new-folder-form button {
@@ -207,7 +316,7 @@
 }
 
 .transaction-amount.credit {
-  color: #2a9d8f;
+  color: var(--success);
 }
 
 .folder-chip {

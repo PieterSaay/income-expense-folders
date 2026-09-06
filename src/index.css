@@ -5,6 +5,8 @@
   --bg-alt: #f7f6f9;
   --border: #e5e4e7;
   --accent: #aa3bff;
+  --success: #2a9d8f;
+  --danger: #d1495b;
 
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -27,6 +29,8 @@
     --bg-alt: #1c1d24;
     --border: #2e303a;
     --accent: #c084fc;
+    --success: #4fb3a3;
+    --danger: #e5707f;
   }
 }
 
